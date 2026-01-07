@@ -10,8 +10,8 @@ class Solution(object):
         for s in strs[1:]:
             while not s.startswith(lcp):
                 lcp = lcp[:-1]
-            if lcp == "":
-                return ""
+                if lcp == "":
+                    return ""
 
         return lcp
         
