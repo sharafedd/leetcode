@@ -15,10 +15,11 @@ class Solution(object):
         total, sub = 0, []
 
         def dfs(node):
+
             if not node: return 0
-            left, right = dfs(node.left), dfs(node.right)
-            s = node.val + left + right
+            s = node.val + dfs(node.left) + dfs(node.right)
             sub.append(s)
+            
             return s
 
         total = dfs(root)
