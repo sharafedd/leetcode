@@ -15,7 +15,7 @@ class Solution(object):
         temp = l3
         carry = 0
 
-        while l1 or l2 or carry:
+        while l1 or l2:
             if l1:
                 carry = carry + l1.val
                 l1 = l1.next
@@ -28,6 +28,6 @@ class Solution(object):
             carry = carry // 10
 
         if carry != 0: temp.next = ListNode(carry)
-        
+
         return l3.next
         
