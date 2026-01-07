@@ -11,33 +11,18 @@ class Solution(object):
         :type root: Optional[TreeNode]
         :rtype: int
         """
-        
-        MOD = 10**9 + 7
 
-        def treeSum(node):
-            if not node:
-                return 0
-            return node.val + treeSum(node.left) + treeSum(node.right)
-
-        # why do we need slef?
-        self.total_sum = treeSum(root)
-        self.best = 0
+        total, sub = 0, []
 
         def dfs(node):
-            if not node:
-                return 0
+            if not node: return 0
+            left, right = dfs(node.left), dfs(node.right)
+            s = node.val + left + right
+            sub.append(s)
+            return s
 
-            left = dfs(node.left)
-            right = dfs(node.right)
-
-            sub = node.val + left + right
-
-            self.best = max(self.best, sub * (self.total_sum - sub))
-
-            return sub
-
-        dfs(root)
-        return self.best % MOD
+        total = dfs(root)
+        return max(x * (total -x) for x in sub) % (10**9 + 7)
 
 
 
