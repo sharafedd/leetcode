@@ -5,10 +5,10 @@ class Solution(object):
         :rtype: List[int]
         """
 
-        ans = []
+        ans = [0] * (n + 1)
 
-        for i in range(n + 1):
-            ans.append(bin(i).count("1"))
+        for i in range(1, n + 1):
+            ans[i] = bin(i).count("1")
 
         return ans
         
