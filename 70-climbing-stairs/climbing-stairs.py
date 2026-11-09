@@ -23,8 +23,8 @@ class Solution(object):
         # return two
 
         # Optimisation
-        one, two = 0, 1
+        prec, curr = 0, 1
         for _ in range(n):
-            one, two = two, one + two
-        return two
+            prec, curr = curr, prec + curr
+        return curr
 
