@@ -1,0 +1,31 @@
+class Solution(object):
+    def combinationSum(self, candidates, target):
+        """
+        :type candidates: List[int]
+        :type target: int
+        :rtype: List[List[int]]
+        """
+
+        result = []
+        path = []
+        
+        def backtrack(start, remaining):
+
+            if remaining == 0:
+                result.append(path[:])
+                return
+
+            if remaining < 0:
+                return
+
+            for i in range(start, len(candidates)):
+                current = candidates[i]
+
+                path.append(current)
+
+                backtrack(i, remaining - current)
+
+                path.pop()
+        
+        backtrack(0, target)
+        return result
