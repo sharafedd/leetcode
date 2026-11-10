@@ -4,16 +4,21 @@ class Solution(object):
         :type s: str
         :rtype: bool
         """
-
-        stack = []
-        pairs = {')':'(', ']':'[', '}':'{'}
-
-        for char in s:
-            if char in pairs:
-                if (not stack) or (stack[-1]!=pairs[char]):
-                    return False
-                stack.pop()
-            else:
-                stack.append(char)
         
-        return not stack
+        myhash = {
+            ')': '(',
+            ']': '[',
+            '}': '{'
+        }
+
+        mystack = []
+
+        for ch in s:
+            if ch in myhash:
+                if not mystack or mystack.pop() != myhash[ch]:
+                    return False
+            else:
+                mystack.append(ch)
+
+        return not mystack
+
