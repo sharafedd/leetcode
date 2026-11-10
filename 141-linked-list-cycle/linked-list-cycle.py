@@ -10,13 +10,28 @@ class Solution(object):
         :type head: ListNode
         :rtype: bool
         """
-        
-        arr = []
-        
-        while head:
-            if head.next in arr:
-                return True
-            arr.append(head.next)
-            head = head.next
 
+        # First Solution TC = O(n) SC = O(n)
+        # arr = []
+        
+        # while head:
+        #     if head.next in arr:
+        #         return True
+        #     arr.append(head.next)
+        #     head = head.next
+
+        # return False
+
+        if not head:
+            return False
+            
+        slow = fast = head
+
+        while fast.next and fast.next.next:
+            slow = slow.next
+            fast = fast.next.next
+            if slow == fast:
+                return True
+        
         return False
+        
